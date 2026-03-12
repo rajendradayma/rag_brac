@@ -5,7 +5,7 @@ from typing import List
 
 # LangChain and Loaders
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
-rom langchain_community.document_loaders import PyMuPDFLoader, TextLoader
+from langchain_community.document_loaders import PyMuPDFLoader, TextLoader
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_groq import ChatGroq
