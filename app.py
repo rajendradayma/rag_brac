@@ -112,7 +112,7 @@ def query_rag_agent(question: str, allowed_directories: List[str], target_file: 
             
         return has_folder_access
 
-    retriever = vectorstore.as_retriever(search_kwargs={"filter": rbac_filter, "k": 4})
+    retriever = vectorstore.as_retriever(search_kwargs={"filter": rbac_filter, "k": 12})
 
     system_prompt = (
         "You are a helpful university AI assistant. Use the following pieces of retrieved context "
