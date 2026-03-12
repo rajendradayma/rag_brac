@@ -113,10 +113,18 @@ def query_rag_agent(question: str, allowed_directories: List[str], target_file: 
         return has_folder_access
 
     #retriever = vectorstore.as_retriever(search_kwargs={"filter": rbac_filter, "k": 12})
-    retriever = vectorstore.as_retriever(
-    search_type="mmr", 
-    search_kwargs={"filter": rbac_filter, "k": 10, "fetch_k": 30}
-    )
+    if target_file:
+        # Normal search when a specific PDF is selected (Max Relevance)
+        retriever = vectorstore.as_retriever(
+            search_type="similarity", 
+            search_kwargs={"filter": rbac_filter, "k": 10}
+        )
+    else:
+        # MMR search when a folder is selected (Forces Diversity across PDFs)
+        retriever = vectorstore.as_retriever(
+            search_type="mmr", 
+            search_kwargs={"filter": rbac_filter, "k": 10, "fetch_k": 30}
+        )
 
     system_prompt = (
         "You are a helpful university AI assistant. Use the following pieces of retrieved context "
