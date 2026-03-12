@@ -6,5 +6,6 @@ langchain-groq
 langchain-huggingface
 sentence-transformers
 pypdf
+pymupdf
 faiss-cpu
 streamlit
